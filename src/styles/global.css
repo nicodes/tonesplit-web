@@ -1,1 +1,31 @@
-@import "tailwindcss";
+/* Fonts are the platform's own, not fetched. Nothing here is loaded from a
+   third party, so no visitor's IP reaches a font CDN and a strict CSP has
+   nothing to allow. The stacks reach for the native UI sans and the native
+   monospace of each platform. */
+
+/* The accent is the app's own. Tone Split is a dark instrument with #d9ff57 on
+   near-black -- the transport button, the active voice, the waveform glyphs.
+   The site wears what the product wears. On paper that lime is far too light to
+   read as text (1.2:1), so headings and links use --lime-deep, the same hue
+   dropped to 5.1:1; the lime itself is kept for the dark surfaces, where it is
+   the app's colour at the app's value. */
+:root {
+	--ink: #14170f;
+	--quiet: #61665b;
+	--lime: #d9ff57;
+	--lime-deep: #55701c;
+	--paper: #f4f5ef;
+	--sans: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+	--mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	font-family: var(--sans);
+	background: var(--paper);
+	color: var(--ink);
+	font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+body { min-width: 320px; min-height: 100svh; margin: 0; background: var(--paper); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; }
+::selection { background: var(--lime); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
