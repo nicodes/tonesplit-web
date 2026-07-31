@@ -1,6 +1,6 @@
 # tonesplit-web
 
-The splash page at [tonesplit.app](https://tonesplit.app). One static page.
+The splash page at [tonesplit.com](https://tonesplit.com). One static page.
 
 ```sh
 mise install
