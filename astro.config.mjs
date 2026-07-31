@@ -1,15 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import qwikdev from '@qwikdev/astro';
-
-import tailwindcss from '@tailwindcss/vite';
-
-// https://astro.build/config
-export default defineConfig({
-  integrations: [qwikdev()],
-
-  vite: {
-    plugins: [tailwindcss()]
-  }
-});
+// Nothing configured, and nothing to configure. One static page with no
+// islands, no client runtime and no CSS framework -- the whole site is an
+// Astro layout, a page and a stylesheet, which is the same shape as ormos.dev
+// and komizo.dev.
+export default defineConfig({});
