@@ -14,6 +14,21 @@ description: >
 runs:
   using: composite
   steps:
+    # Cheapest first, and the one most likely to be the only thing wrong.
+    #
+    # `astro check` rather than plain tsc: it understands .astro files, which is
+    # where everything in this repo lives. It runs its own `astro sync` first,
+    # so it does not depend on ../build having run -- it is ordered here because
+    # a type error is a better first thing to read than a missing file.
+    #
+    # typescript is pinned to 6 in package.json. TypeScript 7's native compiler
+    # does not expose the programmatic API @astrojs/check needs, and installing
+    # `typescript` unpinned resolves to 7 and fails at startup rather than on
+    # anything about this code.
+    - name: Type check
+      shell: bash
+      run: bun run typecheck
+
     # A build that emits nothing still "succeeds", so the artefact is checked
     # rather than the exit code.
     - name: The page was actually written
