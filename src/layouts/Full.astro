@@ -42,7 +42,7 @@ const structuredData = {
 		<meta name="twitter:description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body><slot /></body>
 </html>
