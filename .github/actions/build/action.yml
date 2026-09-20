@@ -4,8 +4,8 @@ description: >
   wait behind a build it was going to fail anyway.
 
   A composite action rather than a reusable workflow so it runs in the caller's
-  job, under the caller's name -- ci / Build -- rather than as a nested
-  "caller / callee" check.
+  job, under the caller's name -- Build / Build, Test / Build -- rather than
+  as a nested "caller / callee" check.
 
   Worth being honest about why this is a separate file: unlike the -be repos,
   where one definition is what stops the deploy-side copy being trimmed until it
