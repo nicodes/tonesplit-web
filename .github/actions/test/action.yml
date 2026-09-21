@@ -3,9 +3,11 @@ description: >
   Is this commit good. Nothing is published here; a failure means the site is
   wrong, not that the pipeline is.
 
-  Runs AFTER ../build, because everything it asserts is a property of ./dist. A
-  static site has two ways to be broken that matter -- it did not build, and it
-  built the wrong thing -- and only the second one needs a test.
+  Runs AFTER ../build. A static site has two ways to be broken that matter --
+  it did not build, and it built the wrong thing -- and only the second one
+  needs a test, so everything this action asserts about ./dist is a property
+  of the build. The lint-and-format step is the exception: a source assertion
+  that needs nothing from ./dist, so it goes first.
 
   Vercel runs none of this. Vercel runs `bun run build` and ships whatever comes
   out, so a page that started loading a client runtime would deploy green. This
@@ -14,6 +16,19 @@ description: >
 runs:
   using: composite
   steps:
+    # Lint and format, against the biome.json copied verbatim from the
+    # archetype: one canonical configuration for every web repository, so
+    # style is a fleet property rather than a per-repo debate. The engine
+    # is @biomejs/biome, pinned as an exact devDependency in the product's
+    # package.json and installed by ../build's frozen install, which runs
+    # before this action in the Test job -- `bun x` resolves that local
+    # binary, so the gate always runs the pinned version, never a resolved
+    # latest. A source assertion, so it goes first: it needs nothing from
+    # ./dist and is cheaper than the assertions that do.
+    - name: Lint and format are canonical
+      shell: bash
+      run: bun x biome check
+
     # A build that emits nothing still "succeeds", so the artefact is checked
     # rather than the exit code.
     - name: The page was actually written
