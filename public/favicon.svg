@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+	<title>Tone Split</title>
 	<path d="M16 3 28 10v12L16 29 4 22V10L16 3Z" fill="#14170f"/>
 	<path d="M9 13q3.5-4.5 7 0t7 0M9 21q3.5 4.5 7 0t7 0" fill="none" stroke="#d9ff57" stroke-width="2" stroke-linecap="round"/>
 </svg>
