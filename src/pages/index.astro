@@ -1,10 +1,10 @@
 ---
-import Full from '../layouts/Full.astro';
 import octicons from '@primer/octicons';
+// biome-ignore lint/correctness/noUnusedImports: layout component, used in the template below -- biome's .astro support misses template usage
+import Full from '../layouts/Full.astro';
 
 const appUrl = 'https://app.tonesplit.com';
-const icon = (name: keyof typeof octicons, size = 16) =>
-	octicons[name].toSVG({ width: size, height: size });
+const icon = (name: keyof typeof octicons, size = 16) => octicons[name].toSVG({ width: size, height: size });
 
 // The screen on this page is drawn from the app's own numbers rather than
 // described in prose, so the two cannot quietly drift apart.
@@ -51,8 +51,7 @@ const channelTones = (side: 'left' | 'right') =>
 
 // The knob turns through 270°, from -135° at the minimum to +135° at the
 // maximum. Every dial on this page is placed by that formula rather than by eye.
-const dialAngle = (value: number, min: number, max: number) =>
-	((value - min) / (max - min)) * 270 - 135;
+const dialAngle = (value: number, min: number, max: number) => ((value - min) / (max - min)) * 270 - 135;
 
 const panLabel = (value: number) =>
 	Math.abs(value) < 0.04 ? 'C' : `${value < 0 ? 'L' : 'R'}${Math.round(Math.abs(value) * 100)}`;
