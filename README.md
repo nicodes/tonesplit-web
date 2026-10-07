@@ -48,14 +48,10 @@ More to the point, the parts that could be wrong are computed rather than drawn:
 If the app changes, these go stale in the source, where a reader can see the
 formula that produced them.
 
-## The palette is the app's
+## Presentation
 
-Tone Split is a dark instrument accented in `#d9ff57` — the transport button,
-the active voice, the waveform glyphs. The site wears the same lime on its dark
-surfaces. On paper that colour reads at 1.2:1, so headings and links use
-`--lime-deep` (`#55701c`), the same hue at 5.1:1. Fonts are the platform's own
-and nothing is fetched from a third party.
+A dark instrument sleeve uses the app’s lime accent on near-black surfaces. The illustrated rack is labelled, and all oscillator paths, dial angles and chord counts remain computed at build time. The call to action opens the working web app; no native store availability is implied. Fonts are local platform stacks.
 
 ## Related
 
-- ormos.dev and komizo.dev — same shape, same house
+- ormos.dev and komizo.dev — other products from the same developer
