@@ -1,56 +1,8 @@
 name: Build
-description: >
-  The static site, into ./dist -- type-checked first, so a type error does not
-  wait behind a build it was going to fail anyway.
-
-  A composite action rather than a reusable workflow so it runs in the caller's
-  job, under the caller's name -- Build / Build, Test / Build -- rather than
-  as a nested "caller / callee" check.
-
-  Worth being honest about why this is a separate file: unlike the -be repos,
-  where one definition is what stops the deploy-side copy being trimmed until it
-  no longer matches what people trust on a pull request, this action has exactly
-  ONE caller. There is no cd.yml here -- Vercel deploys this site -- so nothing
-  can drift from anything. It is split out so that every repo in the org has the
-  same shape, and for no stronger reason than that.
-
-  It also shares nothing with the other -web repos. `uses: ./.github/actions/*`
-  is repo-local, so their copies of this file are copies, not references.
-
-  NOTHING LEAVES THE RUNNER. The site is left in ./dist for ../test to assert
-  against. Publishing is Vercel's, from its own build, and nothing here can
-  reach it.
-
+description: Canonical frozen install, source lint, Astro type check and static build
 runs:
   using: composite
   steps:
-    # --frozen-lockfile so CI fails on a lockfile that does not match
-    # package.json, rather than quietly resolving something newer than what
-    # anyone has run locally.
-    - name: Install JS dependencies
-      shell: bash
-      run: bun install --frozen-lockfile
-
-    # Before the build rather than after it. `astro check` runs its own
-    # `astro sync`, so it needs nothing from ./dist -- and a type error is both
-    # the likeliest failure in this repo and the cheapest to reach, so building
-    # first only delayed it.
-    #
-    # It lived in ../test until the fleet-wide ordering pass. It could not go
-    # with the rest of that change -- ../test asserts on ./dist and genuinely
-    # has to run after the build -- so this step moved instead of the phase.
-    #
-    # `astro check` rather than plain tsc: it understands .astro files, which is
-    # where everything in this repo lives.
-    #
-    # typescript is pinned to 6 in package.json. TypeScript 7's native compiler
-    # does not expose the programmatic API @astrojs/check needs, and installing
-    # `typescript` unpinned resolves to 7 and fails at startup rather than on
-    # anything about this code.
-    - name: Type check
-      shell: bash
-      run: bun run typecheck
-
-    - name: Build
-      shell: bash
-      run: bun run build
+  - name: Build
+    shell: bash
+    run: make build
