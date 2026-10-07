@@ -101,7 +101,7 @@ const amin7 = [0, 3, 7, 10].map((interval) => midiToFrequency(69 + interval));
 			<a class="header-cta" href={appUrl}>Open app <span class="icon" set:html={icon('arrow-up-right', 14)} /></a>
 		</header>
 
-		<main>
+		<main id="main-content">
 			<section class="hero">
 				<div class="hero-copy">
 					<p class="eyebrow"><span></span> Left ear, right ear</p>
@@ -113,7 +113,7 @@ const amin7 = [0, 3, 7, 10].map((interval) => midiToFrequency(69 + interval));
 					</p>
 					<div class="hero-actions">
 						<a class="primary-cta" href={appUrl}>Open Tone Split <span class="icon" set:html={icon('arrow-right', 16)} /></a>
-						<p>Web, iOS and Android · best in headphones</p>
+						<p>Open in your browser · best in headphones</p>
 					</div>
 				</div>
 
@@ -121,7 +121,7 @@ const amin7 = [0, 3, 7, 10].map((interval) => midiToFrequency(69 + interval));
 				     build time, and every dial is placed by the app's own angle formula,
 				     so the picture stays sharp on any display and cannot quietly stop
 				     being what the app does. -->
-				<div class="device" aria-label="Tone Split with its four opening voices">
+				<div class="demo-wrap"><p class="demo-caption">Illustrative voice rack · open the app to use the controls.</p><div class="device" aria-label="Tone Split with its four opening voices">
 					<div class="frame-bar">
 						<div class="frame-brand"><span class="menu-lines"></span> tonesplit / voice rack</div>
 						<div class="frame-actions"><span class="icon" set:html={icon('unmute', 13)} /><span class="icon" set:html={icon('pulse', 13)} /></div>
@@ -178,7 +178,7 @@ const amin7 = [0, 3, 7, 10].map((interval) => midiToFrequency(69 + interval));
 						<span class="play" aria-hidden="true"></span>
 					</div>
 				</div>
-			</section>
+			</div></section>
 
 			<section class="principles" aria-label="How Tone Split works">
 				<article>
@@ -457,4 +457,46 @@ const amin7 = [0, 3, 7, 10].map((interval) => midiToFrequency(69 + interval));
 		.footer-brand { display: none; }
 		footer p:nth-child(2) { text-align: left; }
 	}
+
+
+/* An instrument sleeve: dark surfaces, large condensed lettering, lime signal. */
+.site-header { border-bottom: 1px solid #3c4430; }
+.brand, .header-cta { color: #f1f4e9; }
+.brand-mark path:first-child { fill: #d9ff57; }
+.brand-mark path:last-child { stroke: #12170e; }
+.hero { grid-template-columns: 1.2fr .8fr; gap: 80px; margin-top: 72px; }
+h1 { color: #f1f4e9; font-family: Impact,'Arial Narrow',var(--sans); font-weight: 700; font-size: clamp(68px,8vw,118px); text-transform: uppercase; line-height: .96; letter-spacing: -.035em; }
+h1 em { font-family: inherit; font-style: normal; color: #d9ff57; }
+.lede { color: #b5bdab; font-size: 18px; }
+.eyebrow { color: #d9ff57; }
+.eyebrow span { background: #d9ff57; box-shadow: none; }
+.hero-actions { flex-wrap: wrap; }
+.hero-actions p { color: #b5bdab; }
+.primary-cta { background: #d9ff57; color: #12170e; border-radius: 0; padding: 17px 24px; }
+.primary-cta span { color: #12170e; }
+.primary-cta:hover { background: #ebffac; }
+.device { transform: rotate(3deg); border-radius: 18px; border-color: #515b43; box-shadow: 16px 16px 0 #28321b; }
+.device::before, .product-frame::before { display: none; }
+.frame-bar { background: #263020; color: #dbe6cf; border-color: #3c4430; }
+.frame-actions span { background: #3c4430; color: #d9ff57; }
+.principles { border-color: #3c4430; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 35px; }
+.principles article { display: block; border-bottom: 0; }
+.principles article div { display: block; }
+.number { color: #d9ff57; display: block; margin-bottom: 30px; }
+.principles h2 { color: #f1f4e9; font-size: 26px; margin-bottom: 16px; }
+.principles p, .section-head p { color: #b5bdab; }
+.section-head h2 { color: #f1f4e9; }
+.product-frame.wide { transform: none; border-color: #515b43; box-shadow: none; }
+.closing { border-radius: 0; background: #d9ff57; color: #12170e; }
+.closing > p { font-family: Impact,'Arial Narrow',var(--sans); text-transform: uppercase; font-size: clamp(58px,8vw,108px); }
+.chain, .closing-note { color: #3e4d1c; }
+.primary-cta.light { background: #12170e; color: #d9ff57; }
+.primary-cta.light span { color: #d9ff57; }
+footer, footer a { color: #b5bdab; }
+footer a.footer-brand { color: #f1f4e9; }
+@media (max-width: 940px) { .hero { grid-template-columns: 1fr; gap: 45px; } .device { justify-self: center; max-width: 370px; } .principles { grid-template-columns: 1fr; gap: 0; } .principles article { border-bottom: 1px solid #3c4430; } }
+@media (max-width: 600px) { h1 { font-size: 66px; } .hero { margin-top: 45px; } .device { width: calc(100% - 24px); transform: none; } .hero-actions { align-items: flex-start; } }
+
+.demo-caption { color: var(--quiet); font: 11px/1.6 var(--mono); margin: 0; }
+.demo-wrap { min-width: 0; } .demo-caption { margin-bottom: 12px; }
 </style>
