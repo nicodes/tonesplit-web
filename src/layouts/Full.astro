@@ -17,7 +17,7 @@ const structuredData = {
 	name: 'Tone Split',
 	url: 'https://tonesplit.com',
 	applicationCategory: 'MultimediaApplication',
-	operatingSystem: 'Web, iOS, Android',
+	operatingSystem: 'Web',
 	description,
 };
 ---
@@ -28,7 +28,7 @@ const structuredData = {
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
-		<meta name="theme-color" content="#f4f5ef" />
+		<meta name="theme-color" content="#151b11" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonical} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -44,5 +44,5 @@ const structuredData = {
 		<title>{title}</title>
 		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
-	<body><slot /></body>
+	<body><a class="skip-link" href="#main-content">Skip to content</a><slot /></body>
 </html>
