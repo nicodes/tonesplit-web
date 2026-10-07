@@ -55,3 +55,7 @@ A dark instrument sleeve uses the app’s lime accent on near-black surfaces. Th
 ## Related
 
 - ormos.dev and komizo.dev — other products from the same developer
+
+## Standard developer commands
+
+Use `mise install` to install the pinned Bun toolchain. Run `mise exec -- make check` for frozen dependency installation, source lint, type checking, the static build and all output assertions. `make test` verifies an existing build. `make dev` runs the development server in the foreground; stop it with Ctrl-C. `make clean` removes generated output.
