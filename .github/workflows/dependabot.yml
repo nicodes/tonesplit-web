@@ -1,4 +1,4 @@
-name: Dependabot
+name: "Dependency Policy"
 
 # Thin caller: the gate body is the shared reusable workflow in nicodes/cicd,
 # pinned by full commit SHA. The policy scripts it runs come from this
@@ -24,6 +24,7 @@ concurrency:
 
 jobs:
   auto-merge:
+    name: "Apply dependency policy"
     uses: nicodes/cicd/.github/workflows/dependabot.yml@fa8e3e772d386255665a2813b754365ef0f2aae3 # v0.2.1
     with:
       dispatch-target: ci.yml
