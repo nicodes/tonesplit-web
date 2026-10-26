@@ -1,8 +1,0 @@
-name: Build
-description: Canonical frozen install, source lint, Astro type check and static build
-runs:
-  using: composite
-  steps:
-  - name: Build
-    shell: bash
-    run: make build
