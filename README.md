@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 212cade7d77828a60a28b19e7a6cd8b56ad0d3f7fbadb16365bb3177534a8d4d -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 12b212227b6e675e0adad368561ec450bf236751dc13c55c9f7a1575ecc66254 -->
 
 # tonesplit-web
 
@@ -19,9 +19,11 @@ For contributor verification, prepare the pinned helper source before running na
 
 ```sh
 git clone https://github.com/nicodes/tools.git .ci-tools
-git -C .ci-tools checkout --detach f7e243524ce2aa29f299e4c79db33001f72f4a30
+git -C .ci-tools checkout --detach 091101094fedf5ce2e67c339c1c9c842d6a662dc
 mise install
 mise run check
 ```
 
 Build commands record source and exact regular output hashes. Declared tests produce evidence from the current verification session in `.artifacts/verification`.
+
+`mise run dev` owns the checkout’s foreground process tree. Dependency preparation and the application use an isolated local environment through the pinned optional ghenv CLI; no account is needed. Startup refuses changes to the native task policy during preparation. `mise run stop` stops only that checkout, and `mise run clean` refuses cleanup while its session is active.
