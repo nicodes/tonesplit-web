@@ -1,4 +1,4 @@
-<!-- Generated from private documentation source. Do not edit directly. Source SHA256: fa6fb49cdab8766e42c8f4c2e7132b5227f31c8a79fd2737a2afcc08532766f8 -->
+<!-- Generated from private documentation source. Do not edit directly. Source SHA256: 2f69eb2b241b7b499595a916171acf33dd3ea09e302ccac60e8aa1c4c0da0bf5 -->
 
 # tonesplit-web
 
@@ -19,7 +19,7 @@ For contributor verification, prepare the pinned helper source before running na
 
 ```sh
 git clone https://github.com/nicodes/tools.git .ci-tools
-git -C .ci-tools checkout --detach 39666e8d26d2bd0e1c7e5fee6f289fd0fd3a5202
+git -C .ci-tools checkout --detach 46bf98735de2e7fe41cca1042c20c98f5b01824a
 mise install
 mise run check
 ```
